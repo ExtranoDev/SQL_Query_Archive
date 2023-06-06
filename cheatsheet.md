@@ -565,4 +565,4 @@ WHERE column_name LIKE pattern;
 | _ | The underscore represents a single character |
 
 
-
+AUTHOR -- https://github.com/mobinni
