@@ -25,3 +25,18 @@ GROUP BY hire_date;
 SELECT hire_date, count( hire_date ) FROM employees
 WHERE EXTRACT(YEAR FROM hire_date) >= 1991
 GROUP BY hire_date;
+
+-- Creating Views in Databases
+
+SELECT DISTINCT e.emp_no, e.first_name, e.last_name, MAX(s.salary) OVER (PARTITION BY emp_no ORDER BY e.emp_no) AS "Salary" FROM employees AS e
+JOIN salaries AS s USING(emp_no)
+WHERE Salary > 80000
+
+CREATE VIEW "bigbucks" AS
+SELECT e.emp_no, s.salary
+FROM employees as e
+JOIN salaries as s USING(emp_no)
+WHERE s.salary > 80000
+ORDER BY s.salary;
+
+SELECT * FROM "bigbucks"
